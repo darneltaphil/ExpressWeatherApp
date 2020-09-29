@@ -9,6 +9,8 @@ app.get('/', (req,res) => {
         res.send('nothing is here')
 });
 
+//app.set('views', path.join(__dirname, 'build'));
+
 //routing to the weather display
 app.get('/getweather/:town', (req,res) => {
   const location = req.params.town;
