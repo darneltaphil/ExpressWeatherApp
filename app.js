@@ -14,8 +14,7 @@ app.get('/getweather/:town', (req,res) => {
   const location = req.params.town;
   request('http://api.weatherstack.com/current?access_key=837e00581a14b54b44fcb5f46b8d591b&query='+location, 
   (err,req, body) => {
-    if(!err && res.statusCode==200){
-        res.send(body)
+    if(!err && res.statusCode==200){ res.send(body)
     }
   })
 });
