@@ -13,7 +13,7 @@ const app = express();
 //  }  
 
 //routing to the weather display
-app.get('/:town', (req,res) => {
+app.get('/getWeather/:town', (req,res) => {
   const location = req.params.town;
   request('http://api.weatherstack.com/current?access_key=837e00581a14b54b44fcb5f46b8d591b&query='+location, 
   (err,req, body) => {
