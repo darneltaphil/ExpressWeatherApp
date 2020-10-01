@@ -10,10 +10,10 @@ const app = express();
 //production mode
 // if(process.env.NODE_ENV === 'production') {  
 //   app.use(express.static(path.join(__dirname, 'client/build')));
-//  }
+//  }  
 
 //routing to the weather display
-app.get('/getWeather/:town', (req,res) => {
+app.get('/:town', (req,res) => {
   const location = req.params.town;
   request('http://api.weatherstack.com/current?access_key=837e00581a14b54b44fcb5f46b8d591b&query='+location, 
   (err,req, body) => {
