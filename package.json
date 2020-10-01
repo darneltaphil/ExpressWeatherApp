@@ -24,5 +24,8 @@
     "nodemon": "^2.0.4",
     "path": "^0.12.7",
     "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.10.0"
   }
 }

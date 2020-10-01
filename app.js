@@ -4,18 +4,13 @@ const path = require('path');
 const port = process.env.PORT || 5000;
 const app = express();
 
-// Root render
-// app.get('/', (req,res) => {
-//         res.send('nothing is here')
-// });
-
 //Static file declaration
-app.use(express.static(path.join(__dirname, 'client/build')));
+//app.use(express.static(path.join(__dirname, 'client/build')));
 
 //production mode
- if(process.env.NODE_ENV === 'production') {  
-   app.use(express.static(path.join(__dirname, 'client/build')));
-  }
+// if(process.env.NODE_ENV === 'production') {  
+//   app.use(express.static(path.join(__dirname, 'client/build')));
+//  }
 
 //routing to the weather display
 app.get('/getWeather/:town', (req,res) => {
@@ -27,17 +22,10 @@ app.get('/getWeather/:town', (req,res) => {
   })
 });
 
-// An api endpoint that returns the login page
-// app.get('/login', (req,res) => {
-//    console.log('I am going to work on that soon');
-// });
+app.get('*', (req,res) =>{
+  res.sendStatus(404);
+});
 
-// app.get('*', (req,res) =>{
-//   res.sendStatus(404);
-// });
-
-
-// app.listen(port);
 //start server
 app.listen(port, (req, res) => {  console.log( `server listening on port: ${port}`);})
-//console.log('App is listening on port ' + port);
+
