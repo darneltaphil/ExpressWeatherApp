@@ -1,27 +1,30 @@
 const express = require('express');
 const request = require('request');
-//const path = require('path');
+const cors = require('cors');
+require('dotenv').config()
 
-const port = 5000;
+
+const port = process.env.PORT;
 const app = express();
 
-//Static file declaration
-//app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(cors());
 
-//production mode
-// if(process.env.NODE_ENV === 'production') {  
-//   app.use(express.static(path.join(__dirname, 'client/build')));
-//  }  
+app.use( (req,res,next)=>{
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+})
 
 //routing to the weather display
 app.get('/getWeather/:town', (req,res) => {
   const location = req.params.town;
-  request('http://api.weatherstack.com/current?access_key=837e00581a14b54b44fcb5f46b8d591b&query='+location, 
+  request(process.env.API+location, 
   (err,req, body) => {
-    if(!err && res.statusCode==200){ res.send(body)
+    if(!err && res.statusCode==200){ 
+      res.send(body);
     }
   })
 });
+
 
 app.get('*', (req,res) =>{
   res.sendStatus(404);
